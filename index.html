@@ -7,10 +7,13 @@
     <title>Rock-Paper-Scissors</title>
 </head>
 <body>
-    
+    <h1>JANKEN!</h1>
 </body>
 
 <script>
+    let playerScore = 0;
+    let cpuScore = 0;
+
     function computerPlay() {
         let values = ["Rock", "Paper", "Scissors"]
         computerValues = values[Math.floor(Math.random() * values.length)];
@@ -19,7 +22,6 @@
 
     function playRound(playerSelection, computerSelection) {
         computerSelection = computerPlay().toLowerCase();
-        playerSelection = playerSelection.toLowerCase();
         if (computerSelection == playerSelection) {
             console.log("Tie")
         }
@@ -27,29 +29,65 @@
             (computerSelection == "rock" && playerSelection == "scissors")
             )
             {
+                cpuScore++
                 console.log("CPU wins")
             }
             else if (
             (computerSelection == "scissors" && playerSelection == "paper")
             )
             {
+                cpuScore++
                 console.log("CPU wins")
             }
             else if (
             (computerSelection == "paper" && playerSelection == "rock")
             )
             {
+                cpuScore++
                 console.log("CPU wins")
             }
             else
             {
+                playerScore++
                 console.log("Human wins")
             }
         }
-    
 
-    const playerSelection = "rock";
     const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
+
+    function game(){
+        let playerSelection = prompt("Janken?").toLowerCase();
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Janken?").toLowerCase();
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Janken?").toLowerCase();;
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Janken?").toLowerCase();;
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Janken?").toLowerCase();;
+        console.log(playRound(playerSelection, computerSelection));
+
+            if (playerScore == cpuScore) {
+            console.log("Tie...")
+        }
+            else if (
+            (playerScore > cpuScore)
+            )
+            {
+                console.log("Human is victorious")
+            }
+            else if (
+            (cpuScore > playerScore)
+            )
+            {
+                console.log("The robots are victorious...")
+            }
+            else
+            {
+                console.log("something went wrong...")
+            }
+    }
+    
+    game();
 </script>
 </html>
